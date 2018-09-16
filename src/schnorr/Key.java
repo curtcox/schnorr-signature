@@ -1,27 +1,24 @@
 package schnorr;
 
-import java.io.File;
-import java.io.FileNotFoundException;
-import java.io.FileReader;
-import java.io.PrintWriter;
-import java.math.BigInteger;
-import java.util.ArrayList;
-import java.util.Scanner;
+import java.io.*;
+import java.math.*;
+import java.util.*;
 
 /**
  * Created by Dmitrii on 17.11.2016.
  */
 public class Key {
-    private ArrayList<BigInteger> Entity;
+
+    private List<BigInteger> entity;
 
     public Key(){
-        Entity = new ArrayList<BigInteger>();
+        entity = new ArrayList<>();
     }
 
     public Key(BigInteger[] keys){
-        Entity = new ArrayList<BigInteger>();
+        entity = new ArrayList<>();
         for (int i = 0; i < keys.length; i++){
-            Entity.add(keys[i]);
+            entity.add(keys[i]);
         }
     }
     public Key(String path) throws FileNotFoundException {
@@ -29,24 +26,24 @@ public class Key {
     }
 
     public BigInteger get(int idx){
-        if (idx >= Entity.size()) {
+        if (idx >= entity.size()) {
             throw new IllegalArgumentException("idx more then size");
         }
-        return Entity.get(idx);
+        return entity.get(idx);
     }
 
     public void readFromFile(String path) throws FileNotFoundException {
         Scanner scanner = new Scanner(new FileReader(path));
-        Entity = new ArrayList<BigInteger>();
+        entity = new ArrayList<>();
         while (scanner.hasNextBigInteger()){
-            Entity.add(scanner.nextBigInteger());
+            entity.add(scanner.nextBigInteger());
         }
         scanner.close();
     }
 
     public void writeToFile(String path) throws FileNotFoundException {
         PrintWriter printWriter = new PrintWriter(new File(path));
-        for (BigInteger element : Entity){
+        for (BigInteger element : entity){
             printWriter.println(element);
         }
         printWriter.close();
