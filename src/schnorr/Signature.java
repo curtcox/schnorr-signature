@@ -1,15 +1,15 @@
-import java.io.File;
+package schnorr;
+
+import schnorr.Key;
+
 import java.io.FileNotFoundException;
 import java.io.IOException;
-import java.io.PrintWriter;
 import java.math.BigInteger;
 import java.nio.file.Files;
 import java.nio.file.Paths;
 import java.security.MessageDigest;
 import java.security.NoSuchAlgorithmException;
-import java.security.PublicKey;
 import java.security.SecureRandom;
-import java.util.Arrays;
 
 /**
  * Created by Dmitrii on 17.11.2016.
