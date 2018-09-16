@@ -1,23 +1,18 @@
 package schnorr;
 
-import schnorr.Key;
-
-import java.io.FileNotFoundException;
-import java.io.IOException;
-import java.math.BigInteger;
-import java.nio.file.Files;
-import java.nio.file.Paths;
-import java.security.MessageDigest;
-import java.security.NoSuchAlgorithmException;
-import java.security.SecureRandom;
+import java.io.*;
+import java.math.*;
+import java.nio.file.*;
+import java.security.*;
 
 /**
  * Created by Dmitrii on 17.11.2016.
  */
-public class Signature {
+class Signature {
 
-
-    public static void checkSign(String path, String pathPublicKey, String pathSign) throws IOException, NoSuchAlgorithmException {
+     static void checkSign(String path, String pathPublicKey, String pathSign)
+             throws IOException, NoSuchAlgorithmException
+     {
         System.out.println("cheking sign");
         Key PublicKey = new Key(pathPublicKey);
         Key Sign = new Key(pathSign);
@@ -44,7 +39,7 @@ public class Signature {
             System.out.println("Schnorr signature is not valid");
     }
 
-    public static void makeSign(String path, String pathPublicKey, String pathPrivateKey, String pathSign) throws IOException, NoSuchAlgorithmException {
+     static void makeSign(String path, String pathPublicKey, String pathPrivateKey, String pathSign) throws IOException, NoSuchAlgorithmException {
         Key PublicKey = new Key(pathPublicKey);
         Key PrivateKey = new Key(pathPrivateKey);
         BigInteger q = PublicKey.get(0);
@@ -70,7 +65,7 @@ public class Signature {
         System.out.println("Success!");
     }
 
-    public static void generate(int blq, String pathPublicKey, String pathPrivateKey) throws FileNotFoundException {
+     static void generate(int blq, String pathPublicKey, String pathPrivateKey) throws FileNotFoundException {
         System.out.println("generating:");
 
         BigInteger one = new BigInteger("1");

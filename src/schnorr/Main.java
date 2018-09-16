@@ -1,12 +1,11 @@
 package schnorr;
 
-import java.io.IOException;
-import java.math.BigInteger;
-import java.security.spec.ECField;
-import java.util.Scanner;
+import java.io.*;
+import java.util.*;
 import java.security.*;
 
-public class Main {
+ class Main {
+
     static String pathSign = "Sign.txt";
     static String pathPublicKey = "PublicKey.txt";
     static String pathPrivateKey = "PrivateKey.txt";
