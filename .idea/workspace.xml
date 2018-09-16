@@ -2,7 +2,10 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="f258c5e5-7a02-48c1-a7fc-3097fe692a08" name="Default" comment="">
-      <change beforePath="$PROJECT_DIR$/src/schnorr/Key.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/schnorr/Key.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/schnorr/SignatureTest.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/schnorr/Main.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/schnorr/Main.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/schnorr/Signature.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/schnorr/Signature.java" afterDir="false" />
     </list>
     <ignored path="Schnorr_signature.iws" />
     <ignored path=".idea/workspace.xml" />
@@ -25,15 +28,55 @@
     <splitter split-orientation="horizontal" split-proportion="0.5">
       <split-first>
         <leaf SIDE_TABS_SIZE_LIMIT_KEY="375">
-          <file leaf-file-name="Key.java" pinned="false" current-in-tab="true">
-            <entry file="file://$PROJECT_DIR$/src/schnorr/Key.java">
+          <file leaf-file-name="Main.java" pinned="false" current-in-tab="true">
+            <entry file="file://$PROJECT_DIR$/src/schnorr/Main.java">
               <provider selected="true" editor-type-id="text-editor">
-                <state relative-caret-position="165">
-                  <caret line="11" column="12" lean-forward="true" selection-start-line="11" selection-start-column="12" selection-end-line="11" selection-end-column="12" />
+                <state relative-caret-position="495">
+                  <caret line="33" column="17" selection-start-line="33" selection-start-column="17" selection-end-line="33" selection-end-column="17" />
                   <folding>
                     <element signature="imports" expanded="true" />
-                    <element signature="e#202#203#0" expanded="true" />
-                    <element signature="e#244#245#0" expanded="true" />
+                  </folding>
+                </state>
+              </provider>
+            </entry>
+          </file>
+          <file leaf-file-name="Key.java" pinned="false" current-in-tab="false">
+            <entry file="file://$PROJECT_DIR$/src/schnorr/Key.java">
+              <provider selected="true" editor-type-id="text-editor">
+                <state relative-caret-position="530">
+                  <caret line="44" column="4" selection-start-line="44" selection-start-column="4" selection-end-line="44" selection-end-column="4" />
+                  <folding>
+                    <element signature="imports" expanded="true" />
+                    <element signature="e#197#198#0" expanded="true" />
+                    <element signature="e#239#240#0" expanded="true" />
+                  </folding>
+                </state>
+              </provider>
+            </entry>
+          </file>
+          <file leaf-file-name="Signature.java" pinned="false" current-in-tab="false">
+            <entry file="file://$PROJECT_DIR$/src/schnorr/Signature.java">
+              <provider selected="true" editor-type-id="text-editor">
+                <state relative-caret-position="-95">
+                  <caret line="67" column="4" selection-start-line="67" selection-start-column="4" selection-end-line="67" selection-end-column="4" />
+                  <folding>
+                    <element signature="imports" expanded="true" />
+                    <element signature="e#3814#3815#0" expanded="true" />
+                    <element signature="e#3850#3851#0" expanded="true" />
+                  </folding>
+                </state>
+              </provider>
+            </entry>
+          </file>
+          <file leaf-file-name="SignatureTest.java" pinned="false" current-in-tab="false">
+            <entry file="file://$PROJECT_DIR$/src/schnorr/SignatureTest.java">
+              <provider selected="true" editor-type-id="text-editor">
+                <state relative-caret-position="105">
+                  <caret line="7" selection-start-line="7" selection-end-line="7" />
+                  <folding>
+                    <element signature="imports" expanded="true" />
+                    <element signature="e#176#177#0" expanded="true" />
+                    <element signature="e#216#217#0" expanded="true" />
                   </folding>
                 </state>
               </provider>
@@ -46,8 +89,8 @@
           <file leaf-file-name="KeyTest.java" pinned="false" current-in-tab="true">
             <entry file="file://$PROJECT_DIR$/src/schnorr/KeyTest.java">
               <provider selected="true" editor-type-id="text-editor">
-                <state relative-caret-position="30">
-                  <caret line="2" selection-start-line="2" selection-end-line="2" />
+                <state relative-caret-position="120">
+                  <caret line="8" selection-start-line="8" selection-end-line="11" selection-end-column="5" />
                   <folding>
                     <element signature="imports" expanded="true" />
                     <element signature="e#227#228#0" expanded="true" />
@@ -83,6 +126,9 @@
         <option value="$PROJECT_DIR$/src/Main.java" />
         <option value="$PROJECT_DIR$/src/schnorr/KeyTest.java" />
         <option value="$PROJECT_DIR$/src/schnorr/Key.java" />
+        <option value="$PROJECT_DIR$/src/schnorr/SignatureTest.java" />
+        <option value="$PROJECT_DIR$/src/schnorr/Signature.java" />
+        <option value="$PROJECT_DIR$/src/schnorr/Main.java" />
       </list>
     </option>
   </component>
@@ -151,7 +197,7 @@
       </list>
     </option>
   </component>
-  <component name="RunManager" selected="JUnit.KeyTest.can_create">
+  <component name="RunManager" selected="JUnit.SignatureTest.can_create">
     <configuration name="Main (1)" type="Application" factoryName="Application" temporary="true" nameIsGenerated="true">
       <option name="MAIN_CLASS_NAME" value="schnorr.Main" />
       <module name="Schnorr_signature" />
@@ -181,6 +227,29 @@
       <option name="ALTERNATIVE_JRE_PATH" />
       <option name="PACKAGE_NAME" value="schnorr" />
       <option name="MAIN_CLASS_NAME" value="schnorr.KeyTest" />
+      <option name="METHOD_NAME" value="can_create" />
+      <option name="TEST_OBJECT" value="method" />
+      <option name="VM_PARAMETERS" />
+      <option name="PARAMETERS" />
+      <option name="WORKING_DIRECTORY" />
+      <option name="PASS_PARENT_ENVS" value="true" />
+      <option name="TEST_SEARCH_SCOPE">
+        <value defaultName="singleModule" />
+      </option>
+      <patterns />
+    </configuration>
+    <configuration name="SignatureTest.can_create" type="JUnit" factoryName="JUnit" temporary="true" nameIsGenerated="true">
+      <module name="Schnorr_signature" />
+      <extension name="coverage">
+        <pattern>
+          <option name="PATTERN" value="schnorr.*" />
+          <option name="ENABLED" value="true" />
+        </pattern>
+      </extension>
+      <option name="ALTERNATIVE_JRE_PATH_ENABLED" value="false" />
+      <option name="ALTERNATIVE_JRE_PATH" />
+      <option name="PACKAGE_NAME" value="schnorr" />
+      <option name="MAIN_CLASS_NAME" value="schnorr.SignatureTest" />
       <option name="METHOD_NAME" value="can_create" />
       <option name="TEST_OBJECT" value="method" />
       <option name="VM_PARAMETERS" />
@@ -588,11 +657,13 @@
       <item itemvalue="Application.Main" />
       <item itemvalue="Application.Main (1)" />
       <item itemvalue="JUnit.KeyTest.can_create" />
+      <item itemvalue="JUnit.SignatureTest.can_create" />
     </list>
     <recent_temporary>
       <list>
-        <item itemvalue="JUnit.KeyTest.can_create" />
+        <item itemvalue="JUnit.SignatureTest.can_create" />
         <item itemvalue="Application.Main (1)" />
+        <item itemvalue="JUnit.KeyTest.can_create" />
         <item itemvalue="Application.Main" />
       </list>
     </recent_temporary>
@@ -619,6 +690,15 @@
     <history-entry file="KeyTest_can_create - 2018.09.16 at 12h 19m 58s.xml">
       <configuration name="KeyTest.can_create" configurationId="JUnit" />
     </history-entry>
+    <history-entry file="KeyTest_can_create - 2018.09.16 at 12h 24m 23s.xml">
+      <configuration name="KeyTest.can_create" configurationId="JUnit" />
+    </history-entry>
+    <history-entry file="KeyTest_can_create - 2018.09.16 at 12h 26m 24s.xml">
+      <configuration name="KeyTest.can_create" configurationId="JUnit" />
+    </history-entry>
+    <history-entry file="SignatureTest_can_create - 2018.09.16 at 12h 40m 43s.xml">
+      <configuration name="SignatureTest.can_create" configurationId="JUnit" />
+    </history-entry>
   </component>
   <component name="TimeTrackingManager">
     <option name="totallyTimeSpent" value="3507000" />
@@ -635,12 +715,12 @@
       <window_info anchor="right" id="Capture Analysis" order="3" />
       <window_info anchor="bottom" id="Event Log" order="7" side_tool="true" />
       <window_info anchor="right" id="Maven Projects" order="3" />
-      <window_info active="true" anchor="bottom" id="Run" order="2" visible="true" weight="0.28498468" />
+      <window_info anchor="bottom" id="Run" order="2" visible="true" weight="0.28498468" />
       <window_info anchor="bottom" id="Version Control" order="7" />
       <window_info anchor="bottom" id="Terminal" order="7" />
       <window_info id="Capture Tool" order="2" />
       <window_info anchor="right" id="Designer" order="3" />
-      <window_info content_ui="combo" id="Project" order="0" visible="true" weight="0.15885417" />
+      <window_info active="true" content_ui="combo" id="Project" order="0" visible="true" weight="0.15885417" />
       <window_info anchor="bottom" id="Find" order="1" weight="0.3299285" />
       <window_info id="Structure" order="1" side_tool="true" weight="0.25" />
       <window_info anchor="right" id="Ant Build" order="1" weight="0.25" />
@@ -790,30 +870,28 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/src/schnorr/Signature.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="105">
-          <caret line="16" column="13" selection-start-line="16" selection-start-column="13" selection-end-line="16" selection-end-column="13" />
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/PrivateKey.txt">
       <provider selected="true" editor-type-id="text-editor" />
     </entry>
     <entry file="file://$PROJECT_DIR$/.gitignore">
       <provider selected="true" editor-type-id="text-editor" />
     </entry>
-    <entry file="file://$PROJECT_DIR$/src/schnorr/Main.java">
+    <entry file="file://$PROJECT_DIR$/src/schnorr/Key.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="60">
-          <caret line="8" column="13" selection-start-line="8" selection-start-column="13" selection-end-line="8" selection-end-column="13" />
+        <state relative-caret-position="530">
+          <caret line="44" column="4" selection-start-line="44" selection-start-column="4" selection-end-line="44" selection-end-column="4" />
+          <folding>
+            <element signature="imports" expanded="true" />
+            <element signature="e#197#198#0" expanded="true" />
+            <element signature="e#239#240#0" expanded="true" />
+          </folding>
         </state>
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/src/schnorr/KeyTest.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="30">
-          <caret line="2" selection-start-line="2" selection-end-line="2" />
+        <state relative-caret-position="120">
+          <caret line="8" selection-start-line="8" selection-end-line="11" selection-end-column="5" />
           <folding>
             <element signature="imports" expanded="true" />
             <element signature="e#227#228#0" expanded="true" />
@@ -822,14 +900,36 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/src/schnorr/Key.java">
+    <entry file="file://$PROJECT_DIR$/src/schnorr/SignatureTest.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="165">
-          <caret line="11" column="12" lean-forward="true" selection-start-line="11" selection-start-column="12" selection-end-line="11" selection-end-column="12" />
+        <state relative-caret-position="105">
+          <caret line="7" selection-start-line="7" selection-end-line="7" />
           <folding>
             <element signature="imports" expanded="true" />
-            <element signature="e#202#203#0" expanded="true" />
-            <element signature="e#244#245#0" expanded="true" />
+            <element signature="e#176#177#0" expanded="true" />
+            <element signature="e#216#217#0" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/schnorr/Signature.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="-95">
+          <caret line="67" column="4" selection-start-line="67" selection-start-column="4" selection-end-line="67" selection-end-column="4" />
+          <folding>
+            <element signature="imports" expanded="true" />
+            <element signature="e#3814#3815#0" expanded="true" />
+            <element signature="e#3850#3851#0" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/schnorr/Main.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="495">
+          <caret line="33" column="17" selection-start-line="33" selection-start-column="17" selection-end-line="33" selection-end-column="17" />
+          <folding>
+            <element signature="imports" expanded="true" />
           </folding>
         </state>
       </provider>

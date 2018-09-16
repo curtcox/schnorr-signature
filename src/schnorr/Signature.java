@@ -10,7 +10,7 @@ import java.security.*;
  */
 class Signature {
 
-     static void checkSign(String path, String pathPublicKey, String pathSign)
+    void checkSign(String path, String pathPublicKey, String pathSign)
              throws IOException, NoSuchAlgorithmException
      {
         println("cheking sign");
@@ -39,7 +39,7 @@ class Signature {
             println("Schnorr signature is not valid");
     }
 
-     static void makeSign(String path, String pathPublicKey, String pathPrivateKey, String pathSign) throws IOException, NoSuchAlgorithmException {
+    void makeSign(String path, String pathPublicKey, String pathPrivateKey, String pathSign) throws IOException, NoSuchAlgorithmException {
         Key publicKey = new Key(pathPublicKey);
         Key privateKey = new Key(pathPrivateKey);
         BigInteger q = publicKey.get(0);
@@ -65,7 +65,7 @@ class Signature {
         println("Success!");
     }
 
-     static void generate(int blq, String pathPublicKey, String pathPrivateKey) throws FileNotFoundException {
+    void generate(int blq, String pathPublicKey, String pathPrivateKey) throws FileNotFoundException {
         println("generating:");
 
         BigInteger one = new BigInteger("1");

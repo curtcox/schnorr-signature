@@ -18,19 +18,20 @@ import java.security.*;
         System.out.println("3 <file path> - check sign");
 
         int type;
+        Signature signature = new Signature();
         while (true) {
             type = s.nextInt();
             if (type == 1) {
                 int blq = s.nextInt();
-                Signature.generate(blq, pathPublicKey, pathPrivateKey);
+                signature.generate(blq, pathPublicKey, pathPrivateKey);
             }
             if (type == 2) {
                 String pathFile = s.next();
-                Signature.makeSign(pathFile, pathPublicKey, pathPrivateKey, pathSign);
+                signature.makeSign(pathFile, pathPublicKey, pathPrivateKey, pathSign);
             }
             if (type == 3) {
                 String pathFile = s.next();
-                Signature.checkSign(pathFile, pathPublicKey, pathSign);
+                signature.checkSign(pathFile, pathPublicKey, pathSign);
             }
             if (type == 4){
                 break;
