@@ -14,39 +14,39 @@ class Signature {
              throws IOException, NoSuchAlgorithmException
      {
         println("cheking sign");
-        Key PublicKey = new Key(pathPublicKey);
-        Key Sign = new Key(pathSign);
-        BigInteger q = PublicKey.get(0);
-        BigInteger p = PublicKey.get(1);
-        BigInteger g = PublicKey.get(2);
-        BigInteger y = PublicKey.get(3);
-        BigInteger s1 = Sign.get(0);
-        BigInteger s2 = Sign.get(1);
+        Key publicKey = new Key(pathPublicKey);
+        Key sign = new Key(pathSign);
+        BigInteger q = publicKey.get(0);
+        BigInteger p = publicKey.get(1);
+        BigInteger g = publicKey.get(2);
+        BigInteger y = publicKey.get(3);
+        BigInteger s1 = sign.get(0);
+        BigInteger s2 = sign.get(1);
 
-        BigInteger X1 = g.modPow(s2, p);
-        BigInteger X2 = (y.modPow(s1, p)).mod(p);
-        BigInteger X = X1.multiply(X2).mod(p);
+        BigInteger x1 = g.modPow(s2, p);
+        BigInteger x2 = (y.modPow(s1, p)).mod(p);
+        BigInteger x = x1.multiply(x2).mod(p);
 
         MessageDigest md5 = MessageDigest.getInstance("MD5");
         md5.update(Files.readAllBytes(Paths.get(path)));;
-        md5.update(X.toString().getBytes());
+        md5.update(x.toString().getBytes());
 
         byte[] digest55 = md5.digest();
-        BigInteger HH = new BigInteger(1, digest55);
-        if (s1.equals(HH))
+        BigInteger hh = new BigInteger(1, digest55);
+        if (s1.equals(hh))
             println("Schnorr signature is valid");
         else
             println("Schnorr signature is not valid");
     }
 
      static void makeSign(String path, String pathPublicKey, String pathPrivateKey, String pathSign) throws IOException, NoSuchAlgorithmException {
-        Key PublicKey = new Key(pathPublicKey);
-        Key PrivateKey = new Key(pathPrivateKey);
-        BigInteger q = PublicKey.get(0);
-        BigInteger p = PublicKey.get(1);
-        BigInteger g = PublicKey.get(2);
-        BigInteger y = PublicKey.get(3);
-        BigInteger w = PrivateKey.get(0);
+        Key publicKey = new Key(pathPublicKey);
+        Key privateKey = new Key(pathPrivateKey);
+        BigInteger q = publicKey.get(0);
+        BigInteger p = publicKey.get(1);
+        BigInteger g = publicKey.get(2);
+        BigInteger y = publicKey.get(3);
+        BigInteger w = privateKey.get(0);
 
         SecureRandom sr = new SecureRandom();
         BigInteger r, x, W, s2, s1;
@@ -60,8 +60,8 @@ class Signature {
         s1 = new BigInteger(1, digest);
         s2 = (r.subtract(w.multiply(s1))).mod(q);
 
-        Key Sign = new Key(new BigInteger[]{s1, s2});
-        Sign.writeToFile(pathSign);
+        Key sign = new Key(new BigInteger[]{s1, s2});
+        sign.writeToFile(pathSign);
         println("Success!");
     }
 
@@ -94,16 +94,16 @@ class Signature {
         w = new BigInteger(blq, sr);
         y = g.modPow(w, p);
 
-        Key PublicKey = new Key(new BigInteger[]{q, p, g, y});
-        PublicKey.writeToFile(pathPublicKey);
+        Key publicKey = new Key(new BigInteger[]{q, p, g, y});
+        publicKey.writeToFile(pathPublicKey);
         println("public key:");
         println("q = " + q);
         println("p = " + p);
         println("g = " + g);
         println("y = " + y);
 
-        Key PrivateKey = new Key(new BigInteger[]{w});
-        PrivateKey.writeToFile(pathPrivateKey);
+        Key privateKey = new Key(new BigInteger[]{w});
+        privateKey.writeToFile(pathPrivateKey);
         println("private key:");
         println("w = "+ w);
     }
