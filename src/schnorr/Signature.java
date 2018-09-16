@@ -13,7 +13,7 @@ class Signature {
      static void checkSign(String path, String pathPublicKey, String pathSign)
              throws IOException, NoSuchAlgorithmException
      {
-        System.out.println("cheking sign");
+        println("cheking sign");
         Key PublicKey = new Key(pathPublicKey);
         Key Sign = new Key(pathSign);
         BigInteger q = PublicKey.get(0);
@@ -34,9 +34,9 @@ class Signature {
         byte[] digest55 = md5.digest();
         BigInteger HH = new BigInteger(1, digest55);
         if (s1.equals(HH))
-            System.out.println("Schnorr signature is valid");
+            println("Schnorr signature is valid");
         else
-            System.out.println("Schnorr signature is not valid");
+            println("Schnorr signature is not valid");
     }
 
      static void makeSign(String path, String pathPublicKey, String pathPrivateKey, String pathSign) throws IOException, NoSuchAlgorithmException {
@@ -62,11 +62,11 @@ class Signature {
 
         Key Sign = new Key(new BigInteger[]{s1, s2});
         Sign.writeToFile(pathSign);
-        System.out.println("Success!");
+        println("Success!");
     }
 
      static void generate(int blq, String pathPublicKey, String pathPrivateKey) throws FileNotFoundException {
-        System.out.println("generating:");
+        println("generating:");
 
         BigInteger one = new BigInteger("1");
         BigInteger two = new BigInteger("2");
@@ -96,15 +96,19 @@ class Signature {
 
         Key PublicKey = new Key(new BigInteger[]{q, p, g, y});
         PublicKey.writeToFile(pathPublicKey);
-        System.out.println("public key:");
-        System.out.println("q = " + q);
-        System.out.println("p = " + p);
-        System.out.println("g = " + g);
-        System.out.println("y = " + y);
+        println("public key:");
+        println("q = " + q);
+        println("p = " + p);
+        println("g = " + g);
+        println("y = " + y);
 
         Key PrivateKey = new Key(new BigInteger[]{w});
         PrivateKey.writeToFile(pathPrivateKey);
-        System.out.println("private key:");
-        System.out.println("w = "+ w);
+        println("private key:");
+        println("w = "+ w);
+    }
+
+    static void println(String message) {
+         System.out.println(message);
     }
 }
