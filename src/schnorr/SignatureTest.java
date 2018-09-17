@@ -36,7 +36,12 @@ class SignatureTest {
     void checkSign() throws Exception {
         Signature signature = new Signature();
         byte[] bytes = "".getBytes();
-        Key publicKey=new Key(new BigInteger[0]);
+        PublicKey publicKey = new PublicKey(
+                new BigInteger("0"),
+                new BigInteger("0"),
+                new BigInteger("0"),
+                new BigInteger("0")
+        );
         Key sign = new Key(new BigInteger[0]);
         signature.checkSign(bytes,publicKey,sign);
     }

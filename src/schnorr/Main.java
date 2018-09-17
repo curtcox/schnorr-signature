@@ -35,7 +35,7 @@ import java.security.*;
             if (type == 3) {
                 String pathFile = s.next();
                 byte[]  bytes = Files.readAllBytes(Paths.get(pathFile));
-                Key publicKey = Key.readFromFile(pathPublicKey);
+                PublicKey publicKey = PublicKey.readFromFile(pathPublicKey);
                 Key      sign = Key.readFromFile(pathSign);
                 if (signature.checkSign(bytes,publicKey,sign)) {
                     println("Schnorr signature is valid");

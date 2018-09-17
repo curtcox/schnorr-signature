@@ -10,13 +10,13 @@ import java.security.*;
  */
 class Signature {
 
-    boolean checkSign(byte[] bytes, Key publicKey, Key sign) throws NoSuchAlgorithmException
+    boolean checkSign(byte[] bytes, PublicKey publicKey, Key sign) throws NoSuchAlgorithmException
      {
         println("cheking sign");
-        BigInteger q = publicKey.get(0);
-        BigInteger p = publicKey.get(1);
-        BigInteger g = publicKey.get(2);
-        BigInteger y = publicKey.get(3);
+        BigInteger q = publicKey.q;
+        BigInteger p = publicKey.p;
+        BigInteger g = publicKey.g;
+        BigInteger y = publicKey.y;
         BigInteger s1 = sign.get(0);
         BigInteger s2 = sign.get(1);
 
