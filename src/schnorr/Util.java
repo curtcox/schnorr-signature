@@ -8,8 +8,7 @@ import java.security.*;
  */
 class Util {
 
-    boolean checkSign(byte[] bytes, PublicKey publicKey, SignKey sign) throws NoSuchAlgorithmException
-     {
+    boolean checkSign(byte[] bytes, PublicKey publicKey, SignKey sign) {
         println("checking sign");
         BigInteger q = publicKey.q;
         BigInteger p = publicKey.p;
@@ -29,12 +28,15 @@ class Util {
         return s1.equals(hh);
     }
 
-    static byte[] md5(byte[] bytes, BigInteger x) throws NoSuchAlgorithmException {
-        MessageDigest md5 = MessageDigest.getInstance("MD5");
-        md5.update(bytes);
-        md5.update(x.toString().getBytes());
-
-        return md5.digest();
+    static byte[] md5(byte[] bytes, BigInteger x) {
+        try {
+            MessageDigest md5 = MessageDigest.getInstance("MD5");
+            md5.update(bytes);
+            md5.update(x.toString().getBytes());
+            return md5.digest();
+        } catch (NoSuchAlgorithmException e) {
+            throw new RuntimeException(e);
+        }
     }
 
     static void println(String message) {
