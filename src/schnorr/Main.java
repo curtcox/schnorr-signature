@@ -26,7 +26,7 @@ import java.security.*;
             type = s.nextInt();
             if (type == 1) {
                 int blq = s.nextInt();
-                KeyPair keyPair = signature.generate(blq);
+                KeyPair keyPair = KeyPair.generate(blq);
             }
             if (type == 2) {
                 String pathFile = s.next();

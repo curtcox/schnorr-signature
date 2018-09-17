@@ -2,9 +2,9 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="f258c5e5-7a02-48c1-a7fc-3097fe692a08" name="Default" comment="">
-      <change afterPath="$PROJECT_DIR$/src/schnorr/SignKey.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/schnorr/KeyPairTest.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/schnorr/KeyPair.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/schnorr/KeyPair.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/schnorr/Main.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/schnorr/Main.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/schnorr/PrivateKey.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/schnorr/PrivateKey.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/schnorr/Signature.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/schnorr/Signature.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/schnorr/SignatureTest.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/schnorr/SignatureTest.java" afterDir="false" />
     </list>
@@ -29,11 +29,11 @@
     <splitter split-orientation="horizontal" split-proportion="0.5">
       <split-first>
         <leaf SIDE_TABS_SIZE_LIMIT_KEY="375">
-          <file leaf-file-name="Main.java" pinned="false" current-in-tab="true">
+          <file leaf-file-name="Main.java" pinned="false" current-in-tab="false">
             <entry file="file://$PROJECT_DIR$/src/schnorr/Main.java">
               <provider selected="true" editor-type-id="text-editor">
-                <state relative-caret-position="320">
-                  <caret line="41" column="40" selection-start-line="41" selection-start-column="40" selection-end-line="41" selection-end-column="40" />
+                <state relative-caret-position="254">
+                  <caret line="28" column="51" selection-start-line="28" selection-start-column="51" selection-end-line="28" selection-end-column="51" />
                   <folding>
                     <element signature="imports" expanded="true" />
                     <element signature="e#1291#1292#0" expanded="true" />
@@ -51,7 +51,7 @@
           <file leaf-file-name="Key.java" pinned="false" current-in-tab="false">
             <entry file="file://$PROJECT_DIR$/src/schnorr/Key.java">
               <provider selected="true" editor-type-id="text-editor">
-                <state relative-caret-position="216">
+                <state relative-caret-position="257">
                   <caret line="19" selection-start-line="19" selection-end-line="19" />
                   <folding>
                     <element signature="imports" expanded="true" />
@@ -75,8 +75,8 @@
           <file leaf-file-name="Signature.java" pinned="false" current-in-tab="false">
             <entry file="file://$PROJECT_DIR$/src/schnorr/Signature.java">
               <provider selected="true" editor-type-id="text-editor">
-                <state relative-caret-position="-157">
-                  <caret line="35" column="11" selection-start-line="35" selection-start-column="11" selection-end-line="35" selection-end-column="11" />
+                <state relative-caret-position="531">
+                  <caret line="62" lean-forward="true" selection-start-line="59" selection-end-line="62" />
                   <folding>
                     <element signature="imports" expanded="true" />
                     <element signature="e#3814#3815#0" expanded="true" />
@@ -86,11 +86,16 @@
               </provider>
             </entry>
           </file>
-          <file leaf-file-name="KeyPair.java" pinned="false" current-in-tab="false">
+          <file leaf-file-name="KeyPair.java" pinned="false" current-in-tab="true">
             <entry file="file://$PROJECT_DIR$/src/schnorr/KeyPair.java">
               <provider selected="true" editor-type-id="text-editor">
-                <state relative-caret-position="105">
-                  <caret line="7" column="47" selection-start-line="7" selection-start-column="47" selection-end-line="7" selection-end-column="47" />
+                <state relative-caret-position="620">
+                  <caret line="63" lean-forward="true" selection-start-line="63" selection-end-line="63" />
+                  <folding>
+                    <element signature="imports" expanded="true" />
+                    <element signature="e#1608#1609#0" expanded="true" />
+                    <element signature="e#1652#1653#0" expanded="true" />
+                  </folding>
                 </state>
               </provider>
             </entry>
@@ -151,11 +156,20 @@
           <file leaf-file-name="SignatureTest.java" pinned="false" current-in-tab="true">
             <entry file="file://$PROJECT_DIR$/src/schnorr/SignatureTest.java">
               <provider selected="true" editor-type-id="text-editor">
-                <state relative-caret-position="500">
-                  <caret line="45" column="29" lean-forward="true" selection-start-line="45" selection-start-column="29" selection-end-line="45" selection-end-column="29" />
+                <state relative-caret-position="182">
+                  <caret line="15" selection-start-line="15" selection-end-line="15" />
                   <folding>
                     <element signature="imports" expanded="true" />
                   </folding>
+                </state>
+              </provider>
+            </entry>
+          </file>
+          <file leaf-file-name="KeyPairTest.java" pinned="false" current-in-tab="false">
+            <entry file="file://$PROJECT_DIR$/src/schnorr/KeyPairTest.java">
+              <provider selected="true" editor-type-id="text-editor">
+                <state relative-caret-position="45">
+                  <caret line="3" lean-forward="true" selection-start-line="3" selection-end-line="3" />
                 </state>
               </provider>
             </entry>
@@ -200,12 +214,13 @@
         <option value="$PROJECT_DIR$/src/schnorr/Key.java" />
         <option value="$PROJECT_DIR$/src/schnorr/KeyTest.java" />
         <option value="$PROJECT_DIR$/src/schnorr/PublicKey.java" />
-        <option value="$PROJECT_DIR$/src/schnorr/KeyPair.java" />
-        <option value="$PROJECT_DIR$/src/schnorr/Signature.java" />
         <option value="$PROJECT_DIR$/src/schnorr/PrivateKey.java" />
-        <option value="$PROJECT_DIR$/src/schnorr/Main.java" />
         <option value="$PROJECT_DIR$/src/schnorr/SignKey.java" />
+        <option value="$PROJECT_DIR$/src/schnorr/Signature.java" />
+        <option value="$PROJECT_DIR$/src/schnorr/KeyPair.java" />
+        <option value="$PROJECT_DIR$/src/schnorr/KeyPairTest.java" />
         <option value="$PROJECT_DIR$/src/schnorr/SignatureTest.java" />
+        <option value="$PROJECT_DIR$/src/schnorr/Main.java" />
       </list>
     </option>
   </component>
@@ -261,6 +276,11 @@
     <property name="WebServerToolWindowFactoryState" value="false" />
     <property name="aspect.path.notification.shown" value="true" />
     <property name="last_opened_file_path" value="$PROJECT_DIR$" />
+  </component>
+  <component name="RecentsManager">
+    <key name="CopyClassDialog.RECENTS_KEY">
+      <recent name="schnorr" />
+    </key>
   </component>
   <component name="RunDashboard">
     <option name="ruleStates">
@@ -1028,16 +1048,6 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/src/schnorr/Key.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="216">
-          <caret line="19" selection-start-line="19" selection-end-line="19" />
-          <folding>
-            <element signature="imports" expanded="true" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
     <entry file="jar:///Library/Java/JavaVirtualMachines/jdk1.8.0_101.jdk/Contents/Home/src.zip!/java/math/BigInteger.java">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="219">
@@ -1046,13 +1056,6 @@
             <element signature="e#22896#22897#0" expanded="true" />
             <element signature="e#22925#22926#0" expanded="true" />
           </folding>
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/schnorr/KeyPair.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="105">
-          <caret line="7" column="47" selection-start-line="7" selection-start-column="47" selection-end-line="7" selection-end-column="47" />
         </state>
       </provider>
     </entry>
@@ -1078,28 +1081,6 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/src/schnorr/SignatureTest.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="500">
-          <caret line="45" column="29" lean-forward="true" selection-start-line="45" selection-start-column="29" selection-end-line="45" selection-end-column="29" />
-          <folding>
-            <element signature="imports" expanded="true" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/schnorr/Signature.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="-157">
-          <caret line="35" column="11" selection-start-line="35" selection-start-column="11" selection-end-line="35" selection-end-column="11" />
-          <folding>
-            <element signature="imports" expanded="true" />
-            <element signature="e#3814#3815#0" expanded="true" />
-            <element signature="e#3850#3851#0" expanded="true" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/src/schnorr/SignKey.java">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="240">
@@ -1110,14 +1091,65 @@
         </state>
       </provider>
     </entry>
+    <entry file="file://$PROJECT_DIR$/src/schnorr/Key.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="257">
+          <caret line="19" selection-start-line="19" selection-end-line="19" />
+          <folding>
+            <element signature="imports" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/schnorr/Signature.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="531">
+          <caret line="62" lean-forward="true" selection-start-line="59" selection-end-line="62" />
+          <folding>
+            <element signature="imports" expanded="true" />
+            <element signature="e#3814#3815#0" expanded="true" />
+            <element signature="e#3850#3851#0" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/schnorr/KeyPairTest.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="45">
+          <caret line="3" lean-forward="true" selection-start-line="3" selection-end-line="3" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/schnorr/SignatureTest.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="182">
+          <caret line="15" selection-start-line="15" selection-end-line="15" />
+          <folding>
+            <element signature="imports" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
     <entry file="file://$PROJECT_DIR$/src/schnorr/Main.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="320">
-          <caret line="41" column="40" selection-start-line="41" selection-start-column="40" selection-end-line="41" selection-end-column="40" />
+        <state relative-caret-position="254">
+          <caret line="28" column="51" selection-start-line="28" selection-start-column="51" selection-end-line="28" selection-end-column="51" />
           <folding>
             <element signature="imports" expanded="true" />
             <element signature="e#1291#1292#0" expanded="true" />
             <element signature="e#1335#1336#0" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/schnorr/KeyPair.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="620">
+          <caret line="63" lean-forward="true" selection-start-line="63" selection-end-line="63" />
+          <folding>
+            <element signature="imports" expanded="true" />
+            <element signature="e#1608#1609#0" expanded="true" />
+            <element signature="e#1652#1653#0" expanded="true" />
           </folding>
         </state>
       </provider>

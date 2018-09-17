@@ -14,14 +14,6 @@ class SignatureTest {
     }
 
     @Test
-    void generate() throws Exception {
-        Signature signature = new Signature();
-        int blq = 0;
-        KeyPair keyPair = signature.generate(blq);
-        assertNotNull(keyPair);
-    }
-
-    @Test
     void makeSign() throws Exception {
         Signature signature = new Signature();
         byte[] bytes = "".getBytes();
