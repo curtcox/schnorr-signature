@@ -3,17 +3,17 @@ package schnorr;
 import java.io.FileNotFoundException;
 import java.math.BigInteger;
 
-final class SignKey {
+final class Signature {
 
     final BigInteger s1;
     final BigInteger s2;
 
-    SignKey(BigInteger s1, BigInteger s2) {
+    Signature(BigInteger s1, BigInteger s2) {
         this.s1 = s1;
         this.s2 = s2;
     }
 
-    boolean checkSign(byte[] bytes, PublicKey publicKey, SignKey sign) {
+    boolean checkSign(byte[] bytes, PublicKey publicKey, Signature sign) {
         println("checking sign");
         BigInteger q = publicKey.q;
         BigInteger p = publicKey.p;
@@ -34,9 +34,9 @@ final class SignKey {
     }
 
 
-    static SignKey readFromFile(String path) throws FileNotFoundException {
+    static Signature readFromFile(String path) throws FileNotFoundException {
         Key key = Key.readFromFile(path);
-        return new SignKey(key.get(0),key.get(1));
+        return new Signature(key.get(0),key.get(1));
     }
 
     static void println(String message) {

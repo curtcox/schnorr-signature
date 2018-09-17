@@ -26,8 +26,8 @@ class KeyPairTest {
         );
         PrivateKey privateKey = new PrivateKey(new BigInteger("0"));
         KeyPair keyPair = new KeyPair(publicKey,privateKey);
-        SignKey signKey = keyPair.makeSign(bytes, publicKey, privateKey);
-        assertNotNull(signKey);
+        Signature signature = keyPair.makeSign(bytes, publicKey, privateKey);
+        assertNotNull(signature);
     }
 
 }

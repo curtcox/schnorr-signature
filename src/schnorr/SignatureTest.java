@@ -6,7 +6,7 @@ import java.math.BigInteger;
 
 import static org.junit.jupiter.api.Assertions.assertNotNull;
 
-class SignKeyTest {
+class SignatureTest {
 
     @Test
     void can_create() {
@@ -22,7 +22,7 @@ class SignKeyTest {
                 new BigInteger("0"),
                 new BigInteger("0")
         );
-        SignKey sign = new SignKey(new BigInteger("0"),new BigInteger("0"));
+        Signature sign = new Signature(new BigInteger("0"),new BigInteger("0"));
         sign.checkSign(bytes,publicKey,sign);
     }
 

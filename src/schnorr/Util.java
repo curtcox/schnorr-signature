@@ -7,8 +7,7 @@ import java.security.*;
  * Created by Dmitrii on 17.11.2016.
  */
 class Util {
-
-
+    
     static byte[] md5(byte[] bytes, BigInteger x) {
         try {
             MessageDigest md5 = MessageDigest.getInstance("MD5");
