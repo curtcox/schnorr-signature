@@ -26,18 +26,20 @@ import java.security.*;
             type = s.nextInt();
             if (type == 1) {
                 int blq = s.nextInt();
-                KeyPair keyPair = signature.generate(blq, pathPrivateKey);
+                KeyPair keyPair = signature.generate(blq);
             }
             if (type == 2) {
                 String pathFile = s.next();
+                byte[]  bytes = Files.readAllBytes(Paths.get(pathFile));
                 PublicKey publicKey = PublicKey.readFromFile(pathPublicKey);
-                signature.makeSign(pathFile, publicKey, pathPrivateKey, pathSign);
+                PrivateKey privateKey = PrivateKey.readFromFile(pathPrivateKey);
+                signature.makeSign(bytes, publicKey, privateKey);
             }
             if (type == 3) {
                 String pathFile = s.next();
                 byte[]  bytes = Files.readAllBytes(Paths.get(pathFile));
                 PublicKey publicKey = PublicKey.readFromFile(pathPublicKey);
-                Key      sign = Key.readFromFile(pathSign);
+                SignKey      sign = SignKey.readFromFile(pathSign);
                 if (signature.checkSign(bytes,publicKey,sign)) {
                     println("Schnorr signature is valid");
                 } else {

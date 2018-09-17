@@ -17,23 +17,23 @@ class SignatureTest {
     void generate() throws Exception {
         Signature signature = new Signature();
         int blq = 0;
-        String pathPrivateKey = "";
-        KeyPair keyPair = signature.generate(blq,pathPrivateKey);
+        KeyPair keyPair = signature.generate(blq);
+        assertNotNull(keyPair);
     }
 
     @Test
     void makeSign() throws Exception {
         Signature signature = new Signature();
-        String path ="";
+        byte[] bytes = "".getBytes();
         PublicKey publicKey = new PublicKey(
                 new BigInteger("0"),
                 new BigInteger("0"),
                 new BigInteger("0"),
                 new BigInteger("0")
         );
-        String pathPrivateKey="";
-        String pathSign="";
-        signature.makeSign(path,publicKey,pathPrivateKey,pathSign);
+        PrivateKey privateKey = new PrivateKey(new BigInteger("0"));
+        SignKey signKey = signature.makeSign(bytes, publicKey, privateKey);
+        assertNotNull(signKey);
     }
 
     @Test
@@ -46,7 +46,7 @@ class SignatureTest {
                 new BigInteger("0"),
                 new BigInteger("0")
         );
-        Key sign = new Key(new BigInteger[0]);
+        SignKey sign = new SignKey(new BigInteger("0"),new BigInteger("0"));
         signature.checkSign(bytes,publicKey,sign);
     }
 

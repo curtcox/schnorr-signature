@@ -10,15 +10,15 @@ import java.security.*;
  */
 class Signature {
 
-    boolean checkSign(byte[] bytes, PublicKey publicKey, Key sign) throws NoSuchAlgorithmException
+    boolean checkSign(byte[] bytes, PublicKey publicKey, SignKey sign) throws NoSuchAlgorithmException
      {
         println("cheking sign");
         BigInteger q = publicKey.q;
         BigInteger p = publicKey.p;
         BigInteger g = publicKey.g;
         BigInteger y = publicKey.y;
-        BigInteger s1 = sign.get(0);
-        BigInteger s2 = sign.get(1);
+        BigInteger s1 = sign.s1;
+        BigInteger s2 = sign.s2;
 
         BigInteger x1 = g.modPow(s2, p);
         BigInteger x2 = (y.modPow(s1, p)).mod(p);
@@ -39,32 +39,27 @@ class Signature {
         return md5.digest();
     }
 
-    void makeSign(String path, PublicKey publicKey, String pathPrivateKey, String pathSign) throws IOException, NoSuchAlgorithmException {
-        Key privateKey = Key.readFromFile(pathPrivateKey);
+    SignKey makeSign(byte[] bytes, PublicKey publicKey, PrivateKey privateKey) throws NoSuchAlgorithmException {
         BigInteger q = publicKey.q;
         BigInteger p = publicKey.p;
         BigInteger g = publicKey.g;
         BigInteger y = publicKey.y;
-        BigInteger w = privateKey.get(0);
+        BigInteger w = privateKey.w;
 
         SecureRandom sr = new SecureRandom();
         BigInteger r, x, W, s2, s1;
         r = new BigInteger(q.bitLength(), sr);
         x = g.modPow(r, p);
 
-        MessageDigest md5 = MessageDigest.getInstance("MD5");
-        md5.update(Files.readAllBytes(Paths.get(path)));;
-        md5.update(x.toString().getBytes());
-        byte[] digest = md5.digest();
+        byte[] digest = md5(bytes,x);
+
         s1 = new BigInteger(1, digest);
         s2 = (r.subtract(w.multiply(s1))).mod(q);
 
-        Key sign = new Key(new BigInteger[]{s1, s2});
-        sign.writeToFile(pathSign);
-        println("Success!");
+        return new SignKey(s1, s2);
     }
 
-    KeyPair generate(int blq, String pathPrivateKey) throws FileNotFoundException {
+    KeyPair generate(int blq) {
         println("generating:");
 
         BigInteger one = new BigInteger("1");

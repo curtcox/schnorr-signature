@@ -1,5 +1,6 @@
 package schnorr;
 
+import java.io.FileNotFoundException;
 import java.math.BigInteger;
 
 final class PrivateKey {
@@ -10,7 +11,8 @@ final class PrivateKey {
         this.w = w;
     }
 
-    public void writeToFile(String pathPrivateKey) {
-
+    static PrivateKey readFromFile(String path) throws FileNotFoundException {
+        Key key = Key.readFromFile(path);
+        return new PrivateKey(key.get(0));
     }
 }
