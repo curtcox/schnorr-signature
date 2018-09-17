@@ -26,11 +26,12 @@ import java.security.*;
             type = s.nextInt();
             if (type == 1) {
                 int blq = s.nextInt();
-                signature.generate(blq, pathPublicKey, pathPrivateKey);
+                KeyPair keyPair = signature.generate(blq, pathPrivateKey);
             }
             if (type == 2) {
                 String pathFile = s.next();
-                signature.makeSign(pathFile, pathPublicKey, pathPrivateKey, pathSign);
+                PublicKey publicKey = PublicKey.readFromFile(pathPublicKey);
+                signature.makeSign(pathFile, publicKey, pathPrivateKey, pathSign);
             }
             if (type == 3) {
                 String pathFile = s.next();

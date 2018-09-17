@@ -39,13 +39,12 @@ class Signature {
         return md5.digest();
     }
 
-    void makeSign(String path, String pathPublicKey, String pathPrivateKey, String pathSign) throws IOException, NoSuchAlgorithmException {
-        Key publicKey = Key.readFromFile(pathPublicKey);
+    void makeSign(String path, PublicKey publicKey, String pathPrivateKey, String pathSign) throws IOException, NoSuchAlgorithmException {
         Key privateKey = Key.readFromFile(pathPrivateKey);
-        BigInteger q = publicKey.get(0);
-        BigInteger p = publicKey.get(1);
-        BigInteger g = publicKey.get(2);
-        BigInteger y = publicKey.get(3);
+        BigInteger q = publicKey.q;
+        BigInteger p = publicKey.p;
+        BigInteger g = publicKey.g;
+        BigInteger y = publicKey.y;
         BigInteger w = privateKey.get(0);
 
         SecureRandom sr = new SecureRandom();
@@ -65,7 +64,7 @@ class Signature {
         println("Success!");
     }
 
-    void generate(int blq, String pathPublicKey, String pathPrivateKey) throws FileNotFoundException {
+    KeyPair generate(int blq, String pathPrivateKey) throws FileNotFoundException {
         println("generating:");
 
         BigInteger one = new BigInteger("1");
@@ -94,18 +93,18 @@ class Signature {
         w = new BigInteger(blq, sr);
         y = g.modPow(w, p);
 
-        Key publicKey = new Key(new BigInteger[]{q, p, g, y});
-        publicKey.writeToFile(pathPublicKey);
+        PublicKey publicKey = new PublicKey(q, p, g, y);
         println("public key:");
         println("q = " + q);
         println("p = " + p);
         println("g = " + g);
         println("y = " + y);
 
-        Key privateKey = new Key(new BigInteger[]{w});
-        privateKey.writeToFile(pathPrivateKey);
+        PrivateKey privateKey = new PrivateKey(w);
         println("private key:");
         println("w = "+ w);
+
+        return new KeyPair(publicKey,privateKey);
     }
 
     static void println(String message) {
