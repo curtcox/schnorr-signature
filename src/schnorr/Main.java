@@ -4,7 +4,6 @@ import java.io.*;
 import java.nio.file.Files;
 import java.nio.file.Paths;
 import java.util.*;
-import java.security.*;
 
  class Main {
 
@@ -12,7 +11,7 @@ import java.security.*;
     static String pathPublicKey = "PublicKey.txt";
     static String pathPrivateKey = "PrivateKey.txt";
 
-    public static void main(String[] args) throws NoSuchAlgorithmException, IOException {
+    public static void main(String[] args) throws IOException {
 
         Scanner s = new Scanner(System.in);
         println("1 <bits in q> - generate keys");
@@ -40,8 +39,8 @@ import java.security.*;
                 String pathFile = s.next();
                 byte[]  bytes = Files.readAllBytes(Paths.get(pathFile));
                 PublicKey publicKey = PublicKey.readFromFile(pathPublicKey);
-                Signature sign = Signature.readFromFile(pathSign);
-                if (sign.checkSign(bytes,publicKey,sign)) {
+                Signature signature = Signature.readFromFile(pathSign);
+                if (signature.check(bytes,publicKey)) {
                     println("Schnorr util is valid");
                 } else {
                     println("Schnorr util is not valid");

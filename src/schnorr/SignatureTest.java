@@ -23,7 +23,7 @@ class SignatureTest {
                 new BigInteger("0")
         );
         Signature sign = new Signature(new BigInteger("0"),new BigInteger("0"));
-        sign.checkSign(bytes,publicKey,sign);
+        sign.check(bytes,publicKey);
     }
 
 }

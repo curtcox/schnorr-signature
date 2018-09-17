@@ -13,14 +13,12 @@ final class Signature {
         this.s2 = s2;
     }
 
-    boolean checkSign(byte[] bytes, PublicKey publicKey, Signature sign) {
+    boolean check(byte[] bytes, PublicKey publicKey) {
         println("checking sign");
         BigInteger q = publicKey.q;
         BigInteger p = publicKey.p;
         BigInteger g = publicKey.g;
         BigInteger y = publicKey.y;
-        BigInteger s1 = sign.s1;
-        BigInteger s2 = sign.s2;
 
         BigInteger x1 = g.modPow(s2, p);
         BigInteger x2 = (y.modPow(s1, p)).mod(p);
