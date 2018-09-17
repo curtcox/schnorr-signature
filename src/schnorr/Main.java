@@ -34,7 +34,7 @@ import java.security.*;
                 PrivateKey privateKey = PrivateKey.readFromFile(pathPrivateKey);
                 KeyPair keyPair = new KeyPair(publicKey,privateKey);
 
-                Signature signature = keyPair.makeSign(bytes, publicKey, privateKey);
+                Signature signature = keyPair.sign(bytes, publicKey, privateKey);
             }
             if (type == 3) {
                 String pathFile = s.next();

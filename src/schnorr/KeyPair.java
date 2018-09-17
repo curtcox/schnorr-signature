@@ -57,7 +57,7 @@ class KeyPair {
         return new KeyPair(publicKey,privateKey);
     }
 
-    Signature makeSign(byte[] bytes, PublicKey publicKey, PrivateKey privateKey) throws NoSuchAlgorithmException {
+    Signature sign(byte[] bytes, PublicKey publicKey, PrivateKey privateKey) {
         BigInteger q = publicKey.q;
         BigInteger p = publicKey.p;
         BigInteger g = publicKey.g;
