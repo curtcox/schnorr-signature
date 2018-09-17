@@ -10,12 +10,9 @@ import java.security.*;
  */
 class Signature {
 
-    void checkSign(String path, String pathPublicKey, String pathSign)
-             throws IOException, NoSuchAlgorithmException
+    boolean checkSign(byte[] bytes, Key publicKey, Key sign) throws NoSuchAlgorithmException
      {
         println("cheking sign");
-        Key publicKey = new Key(pathPublicKey);
-        Key sign = new Key(pathSign);
         BigInteger q = publicKey.get(0);
         BigInteger p = publicKey.get(1);
         BigInteger g = publicKey.get(2);
@@ -27,21 +24,24 @@ class Signature {
         BigInteger x2 = (y.modPow(s1, p)).mod(p);
         BigInteger x = x1.multiply(x2).mod(p);
 
+        byte[] digest55 = md5(bytes,x);
+
+        BigInteger hh = new BigInteger(1, digest55);
+
+        return s1.equals(hh);
+    }
+
+    byte[] md5(byte[] bytes, BigInteger x) throws NoSuchAlgorithmException {
         MessageDigest md5 = MessageDigest.getInstance("MD5");
-        md5.update(Files.readAllBytes(Paths.get(path)));;
+        md5.update(bytes);
         md5.update(x.toString().getBytes());
 
-        byte[] digest55 = md5.digest();
-        BigInteger hh = new BigInteger(1, digest55);
-        if (s1.equals(hh))
-            println("Schnorr signature is valid");
-        else
-            println("Schnorr signature is not valid");
+        return md5.digest();
     }
 
     void makeSign(String path, String pathPublicKey, String pathPrivateKey, String pathSign) throws IOException, NoSuchAlgorithmException {
-        Key publicKey = new Key(pathPublicKey);
-        Key privateKey = new Key(pathPrivateKey);
+        Key publicKey = Key.readFromFile(pathPublicKey);
+        Key privateKey = Key.readFromFile(pathPrivateKey);
         BigInteger q = publicKey.get(0);
         BigInteger p = publicKey.get(1);
         BigInteger g = publicKey.get(2);

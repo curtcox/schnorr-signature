@@ -9,21 +9,12 @@ import java.util.*;
  */
 class Key {
 
-    private List<BigInteger> entity;
-
-    Key() {
-        entity = new ArrayList<>();
-    }
+    private final List<BigInteger> entity = new ArrayList<>();
 
     Key(BigInteger[] keys) {
-        entity = new ArrayList<>();
         for (int i = 0; i < keys.length; i++){
             entity.add(keys[i]);
         }
-    }
-
-    Key(String path) throws FileNotFoundException {
-        readFromFile(path);
     }
 
     BigInteger get(int idx) {
@@ -33,13 +24,14 @@ class Key {
         return entity.get(idx);
     }
 
-    void readFromFile(String path) throws FileNotFoundException {
+    static Key readFromFile(String path) throws FileNotFoundException {
         Scanner scanner = new Scanner(new FileReader(path));
-        entity = new ArrayList<>();
+        List<BigInteger> entity = new ArrayList<>();
         while (scanner.hasNextBigInteger()){
             entity.add(scanner.nextBigInteger());
         }
         scanner.close();
+        return new Key(entity.toArray(new BigInteger[0]));
     }
 
     void writeToFile(String path) throws FileNotFoundException {
