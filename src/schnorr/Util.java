@@ -6,7 +6,7 @@ import java.security.*;
 /**
  * Created by Dmitrii on 17.11.2016.
  */
-class Signature {
+class Util {
 
     boolean checkSign(byte[] bytes, PublicKey publicKey, SignKey sign) throws NoSuchAlgorithmException
      {

@@ -69,7 +69,7 @@ class KeyPair {
         r = new BigInteger(q.bitLength(), sr);
         x = g.modPow(r, p);
 
-        byte[] digest = Signature.md5(bytes,x);
+        byte[] digest = Util.md5(bytes,x);
 
         s1 = new BigInteger(1, digest);
         s2 = (r.subtract(w.multiply(s1))).mod(q);

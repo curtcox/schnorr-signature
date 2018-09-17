@@ -6,16 +6,16 @@ import java.math.BigInteger;
 
 import static org.junit.jupiter.api.Assertions.assertNotNull;
 
-class SignatureTest {
+class UtilTest {
 
     @Test
     void can_create() {
-        assertNotNull(new Signature());
+        assertNotNull(new Util());
     }
 
     @Test
     void checkSign() throws Exception {
-        Signature signature = new Signature();
+        Util util = new Util();
         byte[] bytes = "".getBytes();
         PublicKey publicKey = new PublicKey(
                 new BigInteger("0"),
@@ -24,7 +24,7 @@ class SignatureTest {
                 new BigInteger("0")
         );
         SignKey sign = new SignKey(new BigInteger("0"),new BigInteger("0"));
-        signature.checkSign(bytes,publicKey,sign);
+        util.checkSign(bytes,publicKey,sign);
     }
 
 }

@@ -21,7 +21,7 @@ import java.security.*;
         println("4 exit");
 
         int type;
-        Signature signature = new Signature();
+        Util util = new Util();
         while (true) {
             type = s.nextInt();
             if (type == 1) {
@@ -42,10 +42,10 @@ import java.security.*;
                 byte[]  bytes = Files.readAllBytes(Paths.get(pathFile));
                 PublicKey publicKey = PublicKey.readFromFile(pathPublicKey);
                 SignKey      sign = SignKey.readFromFile(pathSign);
-                if (signature.checkSign(bytes,publicKey,sign)) {
-                    println("Schnorr signature is valid");
+                if (util.checkSign(bytes,publicKey,sign)) {
+                    println("Schnorr util is valid");
                 } else {
-                    println("Schnorr signature is not valid");
+                    println("Schnorr util is not valid");
                 }
             }
             if (type == 4){
