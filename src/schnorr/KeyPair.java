@@ -1,7 +1,6 @@
 package schnorr;
 
 import java.math.BigInteger;
-import java.security.NoSuchAlgorithmException;
 import java.security.SecureRandom;
 
 class KeyPair {
@@ -43,21 +42,10 @@ class KeyPair {
         w = new BigInteger(blq, sr);
         y = g.modPow(w, p);
 
-        PublicKey publicKey = new PublicKey(q, p, g, y);
-        println("public key:");
-        println("q = " + q);
-        println("p = " + p);
-        println("g = " + g);
-        println("y = " + y);
-
-        PrivateKey privateKey = new PrivateKey(w);
-        println("private key:");
-        println("w = "+ w);
-
-        return new KeyPair(publicKey,privateKey);
+        return new KeyPair(new PublicKey(q, p, g, y), new PrivateKey(w));
     }
 
-    Signature sign(byte[] bytes, PublicKey publicKey, PrivateKey privateKey) {
+    Signature sign(byte[] bytes) {
         BigInteger q = publicKey.q;
         BigInteger p = publicKey.p;
         BigInteger g = publicKey.g;
@@ -77,6 +65,9 @@ class KeyPair {
         return new Signature(s1, s2);
     }
 
+    public String toString() {
+        return "public = " + publicKey + " private = " + privateKey;
+    }
 
     static void println(String message) {
         System.out.println(message);

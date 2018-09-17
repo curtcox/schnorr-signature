@@ -1,6 +1,5 @@
 package schnorr;
 
-import java.io.FileNotFoundException;
 import java.math.BigInteger;
 
 final class Signature {
@@ -31,11 +30,10 @@ final class Signature {
         return s1.equals(hh);
     }
 
-
-    static Signature readFromFile(String path) throws FileNotFoundException {
-        Key key = Key.readFromFile(path);
-        return new Signature(key.get(0),key.get(1));
+    public String toString() {
+        return "< s1=" + s1 + " s2=" + s2 + " >";
     }
+
 
     static void println(String message) {
         System.out.println(message);

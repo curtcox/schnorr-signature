@@ -1,6 +1,5 @@
 package schnorr;
 
-import java.io.FileNotFoundException;
 import java.math.BigInteger;
 
 final class PublicKey {
@@ -17,8 +16,7 @@ final class PublicKey {
         this.y = y;
     }
 
-    static PublicKey readFromFile(String path) throws FileNotFoundException {
-        Key key = Key.readFromFile(path);
-        return new PublicKey(key.get(0),key.get(1),key.get(2),key.get(3));
+    public String toString() {
+        return "< q=" + q + " p=" + p + " g=" + g + "y=" + y + " >";
     }
 }

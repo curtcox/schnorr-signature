@@ -1,49 +1,38 @@
 package schnorr;
 
-import java.io.*;
-import java.nio.file.Files;
-import java.nio.file.Paths;
 import java.util.*;
 
  class Main {
 
-    static String pathSign = "Sign.txt";
-    static String pathPublicKey = "PublicKey.txt";
-    static String pathPrivateKey = "PrivateKey.txt";
-
-    public static void main(String[] args) throws IOException {
+    public static void main(String[] args) {
 
         Scanner s = new Scanner(System.in);
         println("1 <bits in q> - generate keys");
-        println("2 <file path> - make sign");
-        println("3 <file path> - check sign");
+        println("2 <message> - sign");
+        println("3 - check signature");
         println("4 exit");
 
         int type;
+        KeyPair keyPair = null;
+        Signature signature = null;
+        byte[] bytes = null;
         while (true) {
             type = s.nextInt();
             if (type == 1) {
                 int blq = s.nextInt();
-                KeyPair keyPair = KeyPair.generate(blq);
+                keyPair = KeyPair.generate(blq);
+                println("keys = " + keyPair);
             }
             if (type == 2) {
-                String pathFile = s.next();
-                byte[]  bytes = Files.readAllBytes(Paths.get(pathFile));
-                PublicKey publicKey = PublicKey.readFromFile(pathPublicKey);
-                PrivateKey privateKey = PrivateKey.readFromFile(pathPrivateKey);
-                KeyPair keyPair = new KeyPair(publicKey,privateKey);
-
-                Signature signature = keyPair.sign(bytes, publicKey, privateKey);
+                bytes = s.next().getBytes();
+                signature = keyPair.sign(bytes);
+                println("signature = " + signature);
             }
             if (type == 3) {
-                String pathFile = s.next();
-                byte[]  bytes = Files.readAllBytes(Paths.get(pathFile));
-                PublicKey publicKey = PublicKey.readFromFile(pathPublicKey);
-                Signature signature = Signature.readFromFile(pathSign);
-                if (signature.check(bytes,publicKey)) {
-                    println("Schnorr util is valid");
+                if (signature.check(bytes,keyPair.publicKey)) {
+                    println("Signature is valid");
                 } else {
-                    println("Schnorr util is not valid");
+                    println("Signature is not valid");
                 }
             }
             if (type == 4){
