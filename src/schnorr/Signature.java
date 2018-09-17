@@ -10,7 +10,7 @@ class Signature {
 
     boolean checkSign(byte[] bytes, PublicKey publicKey, SignKey sign) throws NoSuchAlgorithmException
      {
-        println("cheking sign");
+        println("checking sign");
         BigInteger q = publicKey.q;
         BigInteger p = publicKey.p;
         BigInteger g = publicKey.g;
@@ -29,32 +29,12 @@ class Signature {
         return s1.equals(hh);
     }
 
-    byte[] md5(byte[] bytes, BigInteger x) throws NoSuchAlgorithmException {
+    static byte[] md5(byte[] bytes, BigInteger x) throws NoSuchAlgorithmException {
         MessageDigest md5 = MessageDigest.getInstance("MD5");
         md5.update(bytes);
         md5.update(x.toString().getBytes());
 
         return md5.digest();
-    }
-
-    SignKey makeSign(byte[] bytes, PublicKey publicKey, PrivateKey privateKey) throws NoSuchAlgorithmException {
-        BigInteger q = publicKey.q;
-        BigInteger p = publicKey.p;
-        BigInteger g = publicKey.g;
-        BigInteger y = publicKey.y;
-        BigInteger w = privateKey.w;
-
-        SecureRandom sr = new SecureRandom();
-        BigInteger r, x, W, s2, s1;
-        r = new BigInteger(q.bitLength(), sr);
-        x = g.modPow(r, p);
-
-        byte[] digest = md5(bytes,x);
-
-        s1 = new BigInteger(1, digest);
-        s2 = (r.subtract(w.multiply(s1))).mod(q);
-
-        return new SignKey(s1, s2);
     }
 
     static void println(String message) {

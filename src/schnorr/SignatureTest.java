@@ -14,21 +14,6 @@ class SignatureTest {
     }
 
     @Test
-    void makeSign() throws Exception {
-        Signature signature = new Signature();
-        byte[] bytes = "".getBytes();
-        PublicKey publicKey = new PublicKey(
-                new BigInteger("0"),
-                new BigInteger("0"),
-                new BigInteger("0"),
-                new BigInteger("0")
-        );
-        PrivateKey privateKey = new PrivateKey(new BigInteger("0"));
-        SignKey signKey = signature.makeSign(bytes, publicKey, privateKey);
-        assertNotNull(signKey);
-    }
-
-    @Test
     void checkSign() throws Exception {
         Signature signature = new Signature();
         byte[] bytes = "".getBytes();
