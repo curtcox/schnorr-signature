@@ -13,7 +13,6 @@ final class Signature {
     }
 
     boolean check(byte[] bytes, PublicKey publicKey) {
-        println("checking sign");
         BigInteger p = publicKey.p;
         BigInteger g = publicKey.g;
         BigInteger y = publicKey.y;
@@ -31,10 +30,5 @@ final class Signature {
 
     public String toString() {
         return "< s1=" + s1 + " s2=" + s2 + " >";
-    }
-
-
-    static void println(String message) {
-        System.out.println(message);
     }
 }

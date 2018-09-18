@@ -16,8 +16,6 @@ class KeyPair {
     }
 
     static KeyPair generate(int blq) {
-        println("generating:");
-
         SecureRandom sr = new SecureRandom();
         BigInteger q = new BigInteger(blq, certainty, sr);
 
@@ -76,10 +74,6 @@ class KeyPair {
 
     public String toString() {
         return "public = " + publicKey + " private = " + privateKey;
-    }
-
-    static void println(String message) {
-        System.out.println(message);
     }
 
 }
