@@ -7,6 +7,8 @@ class KeyPair {
 
     final PublicKey publicKey;
     final PrivateKey privateKey;
+    static final int certainty = 100;
+
 
     KeyPair(PublicKey publicKey, PrivateKey privateKey) {
         this.publicKey = publicKey;
@@ -16,26 +18,28 @@ class KeyPair {
     static KeyPair generate(int blq) {
         println("generating:");
 
-        BigInteger one = new BigInteger("1");
-        BigInteger two = new BigInteger("2");
-        int certainty = 100;
         SecureRandom sr = new SecureRandom();
         BigInteger q = new BigInteger(blq, certainty, sr);
 
-        BigInteger qp = BigInteger.ONE;
+        BigInteger p = compute_p(q);
+        BigInteger g = compute_g(blq,p,q,sr);
+        BigInteger w = new BigInteger(blq, sr);
+        BigInteger y = g.modPow(w, p);
 
+        return new KeyPair(new PublicKey(q, p, g, y), new PrivateKey(w));
+    }
+
+    static BigInteger compute_p(BigInteger q) {
+        BigInteger one = new BigInteger("1");
+        BigInteger two = new BigInteger("2");
+        BigInteger qp = BigInteger.ONE;
         BigInteger p;
         do {
             p = q.multiply(qp).multiply(two).add(one);
             if (p.isProbablePrime(certainty)) break;
             qp = qp.add(BigInteger.ONE);
         } while (true);
-
-        BigInteger g = compute_g(blq,p,q,sr);
-        BigInteger w = new BigInteger(blq, sr);
-        BigInteger y = g.modPow(w, p);
-
-        return new KeyPair(new PublicKey(q, p, g, y), new PrivateKey(w));
+        return p;
     }
 
     static BigInteger compute_g(int blq,BigInteger p, BigInteger q, SecureRandom sr) {
