@@ -18,29 +18,30 @@ class KeyPair {
 
         BigInteger one = new BigInteger("1");
         BigInteger two = new BigInteger("2");
-        BigInteger q, qp, p, a, g, w, y;
         int certainty = 100;
         SecureRandom sr = new SecureRandom();
-        q = new BigInteger(blq, certainty, sr);
+        BigInteger q = new BigInteger(blq, certainty, sr);
 
-        qp = BigInteger.ONE;
+        BigInteger qp = BigInteger.ONE;
 
+        BigInteger p;
         do {
             p = q.multiply(qp).multiply(two).add(one);
             if (p.isProbablePrime(certainty)) break;
             qp = qp.add(BigInteger.ONE);
         } while (true);
 
+        BigInteger g;
         while (true) {
-            a = (two.add(new BigInteger(blq, 100, sr))).mod(p);
+            BigInteger a = (two.add(new BigInteger(blq, 100, sr))).mod(p);
             BigInteger ga = (p.subtract(BigInteger.ONE)).divide(q);
             g = a.modPow(ga, p);
             if (g.compareTo(BigInteger.ONE) != 0)
                 break;
         }
 
-        w = new BigInteger(blq, sr);
-        y = g.modPow(w, p);
+        BigInteger w = new BigInteger(blq, sr);
+        BigInteger y = g.modPow(w, p);
 
         return new KeyPair(new PublicKey(q, p, g, y), new PrivateKey(w));
     }
@@ -49,18 +50,17 @@ class KeyPair {
         BigInteger q = publicKey.q;
         BigInteger p = publicKey.p;
         BigInteger g = publicKey.g;
-        BigInteger y = publicKey.y;
         BigInteger w = privateKey.w;
 
         SecureRandom sr = new SecureRandom();
-        BigInteger r, x, W, s2, s1;
-        r = new BigInteger(q.bitLength(), sr);
-        x = g.modPow(r, p);
+
+        BigInteger r = new BigInteger(q.bitLength(), sr);
+        BigInteger x = g.modPow(r, p);
 
         byte[] digest = Util.md5(bytes,x);
 
-        s1 = new BigInteger(1, digest);
-        s2 = (r.subtract(w.multiply(s1))).mod(q);
+        BigInteger s1 = new BigInteger(1, digest);
+        BigInteger s2 = (r.subtract(w.multiply(s1))).mod(q);
 
         return new Signature(s1, s2);
     }

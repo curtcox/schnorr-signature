@@ -14,7 +14,6 @@ final class Signature {
 
     boolean check(byte[] bytes, PublicKey publicKey) {
         println("checking sign");
-        BigInteger q = publicKey.q;
         BigInteger p = publicKey.p;
         BigInteger g = publicKey.g;
         BigInteger y = publicKey.y;
