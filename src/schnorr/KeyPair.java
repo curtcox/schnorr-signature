@@ -31,19 +31,24 @@ class KeyPair {
             qp = qp.add(BigInteger.ONE);
         } while (true);
 
+        BigInteger g = compute_g(blq,p,q,sr);
+        BigInteger w = new BigInteger(blq, sr);
+        BigInteger y = g.modPow(w, p);
+
+        return new KeyPair(new PublicKey(q, p, g, y), new PrivateKey(w));
+    }
+
+    static BigInteger compute_g(int blq,BigInteger p, BigInteger q, SecureRandom sr) {
         BigInteger g;
+        BigInteger two = new BigInteger("2");
         while (true) {
-            BigInteger a = (two.add(new BigInteger(blq, 100, sr))).mod(p);
+            BigInteger  a = (two.add(new BigInteger(blq, 100, sr))).mod(p);
             BigInteger ga = (p.subtract(BigInteger.ONE)).divide(q);
             g = a.modPow(ga, p);
             if (g.compareTo(BigInteger.ONE) != 0)
                 break;
         }
-
-        BigInteger w = new BigInteger(blq, sr);
-        BigInteger y = g.modPow(w, p);
-
-        return new KeyPair(new PublicKey(q, p, g, y), new PrivateKey(w));
+        return g;
     }
 
     Signature sign(byte[] bytes) {
