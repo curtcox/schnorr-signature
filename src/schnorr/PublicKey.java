@@ -17,6 +17,6 @@ final class PublicKey {
     }
 
     public String toString() {
-        return "< q=" + q + " p=" + p + " g=" + g + "y=" + y + " >";
+        return "< q=" + q + " p=" + p + " g=" + g + " y=" + y + " >";
     }
 }

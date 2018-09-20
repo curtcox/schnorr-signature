@@ -23,26 +23,30 @@ import java.util.*;
      void loopForInput() {
          while (true) {
              type = s.nextInt();
-             if (type == 1) {
-                 int blq = s.nextInt();
-                 keyPair = KeyPair.generate(blq);
-                 println("keys = " + keyPair);
-             }
-             if (type == 2) {
-                 bytes = s.next().getBytes();
-                 signature = keyPair.sign(bytes);
-                 println("signature = " + signature);
-             }
-             if (type == 3) {
-                 if (signature.check(bytes,keyPair.publicKey)) {
-                     println("Signature is valid");
-                 } else {
-                     println("Signature is not valid");
-                 }
-             }
-             if (type == 4){
-                 break;
-             }
+             if (type == 1) { generateKeys();   }
+             if (type == 2) { sign();           }
+             if (type == 3) { checkSignature(); }
+             if (type == 4) { break;            }
+         }
+     }
+
+     void generateKeys() {
+         int blq = s.nextInt();
+         keyPair = KeyPair.generate(blq);
+         println("keys = " + keyPair);
+     }
+
+     void sign() {
+         bytes = s.next().getBytes();
+         signature = keyPair.sign(bytes);
+         println("signature = " + signature);
+     }
+
+     void checkSignature() {
+         if (signature.check(bytes,keyPair.publicKey)) {
+             println("Signature is valid");
+         } else {
+             println("Signature is not valid");
          }
      }
 
