@@ -42,8 +42,8 @@ class KeyPair {
 
     static BigInteger compute_g(int blq,BigInteger p, BigInteger q, SecureRandom sr) {
         BigInteger g;
-        BigInteger two = new BigInteger("2");
         while (true) {
+            BigInteger two = new BigInteger("2");
             BigInteger  a = (two.add(new BigInteger(blq, 100, sr))).mod(p);
             BigInteger ga = (p.subtract(BigInteger.ONE)).divide(q);
             g = a.modPow(ga, p);
@@ -64,13 +64,12 @@ class KeyPair {
         BigInteger r = new BigInteger(q.bitLength(), sr);
         BigInteger x = g.modPow(r, p);
 
-        byte[] digest = Util.md5(bytes,x);
-
-        BigInteger s1 = new BigInteger(1, digest);
+        BigInteger s1 = Util.bigMd5(bytes,x);
         BigInteger s2 = (r.subtract(w.multiply(s1))).mod(q);
 
         return new Signature(s1, s2);
     }
+
 
     public String toString() {
         return "public = " + publicKey + " private = " + privateKey;

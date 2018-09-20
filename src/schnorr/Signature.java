@@ -21,9 +21,7 @@ final class Signature {
         BigInteger x2 = (y.modPow(s1, p)).mod(p);
         BigInteger x = x1.multiply(x2).mod(p);
 
-        byte[] digest55 = Util.md5(bytes,x);
-
-        BigInteger hh = new BigInteger(1, digest55);
+        BigInteger hh = Util.bigMd5(bytes,x);
 
         return s1.equals(hh);
     }
