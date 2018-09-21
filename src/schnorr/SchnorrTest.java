@@ -12,6 +12,27 @@ public class SchnorrTest {
     }
 
     @Test
+    void valid_2_100() {
+        for (int i=0; i<100; i++) {
+            valid(Integer.toString(i),2);
+        }
+    }
+
+    @Test
+    void valid_3_100() {
+        for (int i=0; i<100; i++) {
+            valid(Integer.toString(i),3);
+        }
+    }
+
+    @Test
+    void valid_5_1000() {
+        for (int i=0; i<1000; i++) {
+            valid(Integer.toString(i),5);
+        }
+    }
+
+    @Test
     void valid_10() {
         valid("rain",10);
     }
@@ -27,8 +48,8 @@ public class SchnorrTest {
     }
 
     void valid(String message,int bitLength) {
-        KeyPair keyPair = KeyPair.generate(bitLength);
-        byte[] bytes = message.getBytes();
+        KeyPair     keyPair = KeyPair.generate(bitLength);
+        byte[]        bytes = message.getBytes();
         Signature signature = keyPair.sign(bytes);
         assertTrue(signature.check(bytes,keyPair.publicKey));
     }
@@ -36,6 +57,27 @@ public class SchnorrTest {
     @Test
     void invalid_2() {
         invalid("in",2);
+    }
+
+    @Test
+    void invalid_2_1000() {
+        for (int i=0; i<1000; i++) {
+            invalid(Integer.toString(i),2);
+        }
+    }
+
+    @Test
+    void invalid_5_100() {
+        for (int i=0; i<100; i++) {
+            invalid(Integer.toString(i),2);
+        }
+    }
+
+    @Test
+    void invalid_5_1000() {
+        for (int i=0; i<1000; i++) {
+            invalid(Integer.toString(i),5);
+        }
     }
 
     @Test
@@ -49,8 +91,8 @@ public class SchnorrTest {
     }
 
     void invalid(String message,int bitLength) {
-        KeyPair keyPair = KeyPair.generate(bitLength);
-        byte[] bytes = message.getBytes();
+        KeyPair     keyPair = KeyPair.generate(bitLength);
+        byte[]        bytes = message.getBytes();
         Signature signature = keyPair.sign(bytes);
         assertFalse(signature.check(flip(bytes),keyPair.publicKey));
     }
