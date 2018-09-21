@@ -15,13 +15,13 @@ class KeyPair {
         this.privateKey = privateKey;
     }
 
-    static KeyPair generate(int blq) {
+    static KeyPair generate(int bitLength) {
         SecureRandom sr = new SecureRandom();
-        BigInteger q = new BigInteger(blq, certainty, sr);
+        BigInteger q = new BigInteger(bitLength, certainty, sr);
 
         BigInteger p = compute_p(q);
-        BigInteger g = compute_g(blq,p,q,sr);
-        BigInteger w = new BigInteger(blq, sr);
+        BigInteger g = compute_g(bitLength,p,q,sr);
+        BigInteger w = new BigInteger(bitLength, sr);
         BigInteger y = g.modPow(w, p);
 
         return new KeyPair(new PublicKey(q, p, g, y), new PrivateKey(w));

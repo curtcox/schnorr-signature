@@ -26,8 +26,8 @@ public class SchnorrTest {
         valid("sprainly",500);
     }
 
-    void valid(String message,int blockSize) {
-        KeyPair keyPair = KeyPair.generate(blockSize);
+    void valid(String message,int bitLength) {
+        KeyPair keyPair = KeyPair.generate(bitLength);
         byte[] bytes = message.getBytes();
         Signature signature = keyPair.sign(bytes);
         assertTrue(signature.check(bytes,keyPair.publicKey));
@@ -48,8 +48,8 @@ public class SchnorrTest {
         invalid("sprain",100);
     }
 
-    void invalid(String message,int blockSize) {
-        KeyPair keyPair = KeyPair.generate(blockSize);
+    void invalid(String message,int bitLength) {
+        KeyPair keyPair = KeyPair.generate(bitLength);
         byte[] bytes = message.getBytes();
         Signature signature = keyPair.sign(bytes);
         assertFalse(signature.check(flip(bytes),keyPair.publicKey));
