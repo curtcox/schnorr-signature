@@ -7,50 +7,14 @@ class KeyPair {
 
     final PublicKey publicKey;
     final PrivateKey privateKey;
-    static final int certainty = 100;
 
+    static KeyPair generate(int bitLength) {
+        return new KeyPairGenerator(bitLength).generate();
+    }
 
     KeyPair(PublicKey publicKey, PrivateKey privateKey) {
         this.publicKey = publicKey;
         this.privateKey = privateKey;
-    }
-
-    static KeyPair generate(int bitLength) {
-        SecureRandom sr = new SecureRandom();
-        BigInteger q = new BigInteger(bitLength, certainty, sr);
-
-        BigInteger p = compute_p(q);
-        BigInteger g = compute_g(bitLength,p,q,sr);
-        BigInteger w = new BigInteger(bitLength, sr);
-        BigInteger y = g.modPow(w, p);
-
-        return new KeyPair(new PublicKey(q, p, g, y), new PrivateKey(w));
-    }
-
-    static BigInteger compute_p(BigInteger q) {
-        BigInteger one = new BigInteger("1");
-        BigInteger two = new BigInteger("2");
-        BigInteger qp = BigInteger.ONE;
-        BigInteger p;
-        do {
-            p = q.multiply(qp).multiply(two).add(one);
-            if (p.isProbablePrime(certainty)) break;
-            qp = qp.add(BigInteger.ONE);
-        } while (true);
-        return p;
-    }
-
-    static BigInteger compute_g(int blq,BigInteger p, BigInteger q, SecureRandom sr) {
-        BigInteger g;
-        while (true) {
-            BigInteger two = new BigInteger("2");
-            BigInteger  a = (two.add(new BigInteger(blq, 100, sr))).mod(p);
-            BigInteger ga = (p.subtract(BigInteger.ONE)).divide(q);
-            g = a.modPow(ga, p);
-            if (g.compareTo(BigInteger.ONE) != 0)
-                break;
-        }
-        return g;
     }
 
     Signature sign(byte[] bytes) {
