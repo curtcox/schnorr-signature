@@ -7,21 +7,27 @@ final class KeyPairGenerator {
 
     private final int bitLength;
     private final SecureRandom sr = new SecureRandom();
+    private BigInteger q;
+    private BigInteger p;
+    private BigInteger g;
     private static final int certainty = 100;
     private static final BigInteger one = new BigInteger("1");
     private static final BigInteger two = new BigInteger("2");
 
     public KeyPairGenerator(int bitLength) {
         this.bitLength = bitLength;
+        seed();
+    }
+
+    void seed() {
+        q = randomPrime();
+        p = compute_p(q);
+        g = compute_g(p,q);
     }
 
     KeyPair generate() {
-        BigInteger q = randomPrime();
-        BigInteger p = compute_p(q);
-        BigInteger g = compute_g(p,q);
         BigInteger w = random();
         BigInteger y = g.modPow(w, p);
-
         return new KeyPair(new PublicKey(q, p, g, y), new PrivateKey(w));
     }
 
