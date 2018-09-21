@@ -9,14 +9,7 @@ import static org.junit.jupiter.api.Assertions.assertNotNull;
 class KeyPairTest {
 
     @Test
-    void generate() {
-        int blq = 0;
-        KeyPair keyPair = KeyPair.generate(blq);
-        assertNotNull(keyPair);
-    }
-
-    @Test
-    void makeSign() throws Exception {
+    void makeSign() {
         byte[] bytes = "".getBytes();
         PublicKey publicKey = new PublicKey(
                 new BigInteger("0"),

@@ -14,7 +14,7 @@ final class KeyPairGenerator {
     private static final BigInteger one = new BigInteger("1");
     private static final BigInteger two = new BigInteger("2");
 
-    public KeyPairGenerator(int bitLength) {
+    KeyPairGenerator(int bitLength) {
         this.bitLength = bitLength;
         seed();
     }

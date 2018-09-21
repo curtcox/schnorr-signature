@@ -81,6 +81,13 @@ public class SchnorrTest {
     }
 
     @Test
+    void invalid_5_10000() {
+        for (int i=0; i<10000; i++) {
+            invalid(Integer.toString(i),5);
+        }
+    }
+
+    @Test
     void invalid_10() {
         invalid("rain",10);
     }
