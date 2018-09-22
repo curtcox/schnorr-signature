@@ -9,7 +9,8 @@ class KeyPair {
     final PrivateKey privateKey;
 
     static KeyPair generate(int bitLength) {
-        return new KeyPairGenerator(bitLength).generate();
+        KeySeed seed = new KeySeedGenerator(bitLength).generate();
+        return new KeyPairGenerator(seed).generate();
     }
 
     KeyPair(PublicKey publicKey, PrivateKey privateKey) {

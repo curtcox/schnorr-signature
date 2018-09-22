@@ -9,14 +9,16 @@ public class KeyPairGeneratorTest {
     @Test
     void can_generate() {
         int bitLength = 0;
-        KeyPair keyPair = KeyPair.generate(bitLength);
+        KeySeed seed = new KeySeedGenerator(bitLength).generate();
+        KeyPair keyPair = new KeyPairGenerator(seed).generate();
         assertNotNull(keyPair);
     }
 
     @Test
     void bitLength_5() {
         int bitLength = 5;
-        KeyPair keyPair = KeyPair.generate(bitLength);
+        KeySeed seed = new KeySeedGenerator(bitLength).generate();
+        KeyPair keyPair = new KeyPairGenerator(seed).generate();
 
         System.out.println(keyPair);
     }
@@ -24,7 +26,8 @@ public class KeyPairGeneratorTest {
     @Test
     void bitLength_500() {
         int bitLength = 500;
-        KeyPair keyPair = KeyPair.generate(bitLength);
+        KeySeed seed = new KeySeedGenerator(bitLength).generate();
+        KeyPair keyPair = new KeyPairGenerator(seed).generate();
 
         System.out.println(keyPair);
     }
