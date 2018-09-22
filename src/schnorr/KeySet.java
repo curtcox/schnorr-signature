@@ -3,17 +3,17 @@ package schnorr;
 import java.math.BigInteger;
 import java.security.SecureRandom;
 
-class KeyPair {
+class KeySet {
 
     final PublicKey publicKey;
     final PrivateKey privateKey;
 
-    static KeyPair generate(int bitLength) {
+    static KeySet generate(int bitLength) {
         KeySeed seed = new KeySeedGenerator(bitLength).generate();
         return new KeyPairGenerator(seed).generate();
     }
 
-    KeyPair(PublicKey publicKey, PrivateKey privateKey) {
+    KeySet(PublicKey publicKey, PrivateKey privateKey) {
         this.publicKey = publicKey;
         this.privateKey = privateKey;
     }

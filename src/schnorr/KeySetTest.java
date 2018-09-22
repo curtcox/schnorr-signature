@@ -6,7 +6,7 @@ import java.math.BigInteger;
 
 import static org.junit.jupiter.api.Assertions.assertNotNull;
 
-class KeyPairTest {
+class KeySetTest {
 
     @Test
     void makeSign() {
@@ -18,7 +18,7 @@ class KeyPairTest {
                 new BigInteger("0")
         );
         PrivateKey privateKey = new PrivateKey(new BigInteger("0"));
-        KeyPair keyPair = new KeyPair(publicKey,privateKey);
+        KeySet keyPair = new KeySet(publicKey,privateKey);
         Signature signature = keyPair.sign(bytes);
         assertNotNull(signature);
     }

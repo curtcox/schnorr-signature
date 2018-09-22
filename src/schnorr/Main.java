@@ -5,7 +5,7 @@ import java.util.*;
  class Main {
 
      int type;
-     KeyPair keyPair;
+     KeySet keyPair;
      Signature signature;
      byte[] bytes;
      final Scanner s = new Scanner(System.in);
@@ -32,7 +32,7 @@ import java.util.*;
 
      void generateKeys() {
          int blq = s.nextInt();
-         keyPair = KeyPair.generate(blq);
+         keyPair = KeySet.generate(blq);
          println("keys = " + keyPair);
      }
 
