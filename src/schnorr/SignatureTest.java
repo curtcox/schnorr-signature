@@ -14,16 +14,17 @@ class SignatureTest {
     }
 
     @Test
-    void checkSign() throws Exception {
+    void checkSign() {
         byte[] bytes = "".getBytes();
-        PublicKey publicKey = new PublicKey(
-                new BigInteger("0"),
+        KeySeed seed = new KeySeed(
+                0,
                 new BigInteger("0"),
                 new BigInteger("0"),
                 new BigInteger("0")
         );
+        PublicKey publicKey = new PublicKey(new BigInteger("0"));
         Signature sign = new Signature(new BigInteger("0"),new BigInteger("0"));
-        sign.check(bytes,publicKey);
+        sign.check(bytes,seed,publicKey);
     }
 
 }

@@ -5,7 +5,7 @@ import java.util.*;
  class Main {
 
      int type;
-     KeySet keyPair;
+     KeySet keySet;
      Signature signature;
      byte[] bytes;
      final Scanner s = new Scanner(System.in);
@@ -32,18 +32,18 @@ import java.util.*;
 
      void generateKeys() {
          int blq = s.nextInt();
-         keyPair = KeySet.generate(blq);
-         println("keys = " + keyPair);
+         keySet = KeySet.generate(blq);
+         println("keys = " + keySet);
      }
 
      void sign() {
          bytes = s.next().getBytes();
-         signature = keyPair.sign(bytes);
+         signature = keySet.sign(bytes);
          println("signature = " + signature);
      }
 
      void checkSignature() {
-         if (signature.check(bytes,keyPair.publicKey)) {
+         if (signature.check(bytes, keySet.seed, keySet.publicKey)) {
              println("Signature is valid");
          } else {
              println("Signature is not valid");

@@ -5,6 +5,7 @@ import java.security.SecureRandom;
 
 class KeySet {
 
+    final KeySeed seed;
     final PublicKey publicKey;
     final PrivateKey privateKey;
 
@@ -13,15 +14,16 @@ class KeySet {
         return new KeyPairGenerator(seed).generate();
     }
 
-    KeySet(PublicKey publicKey, PrivateKey privateKey) {
+    KeySet(KeySeed seed, PublicKey publicKey, PrivateKey privateKey) {
+        this.seed = seed;
         this.publicKey = publicKey;
         this.privateKey = privateKey;
     }
 
     Signature sign(byte[] bytes) {
-        BigInteger q = publicKey.q;
-        BigInteger p = publicKey.p;
-        BigInteger g = publicKey.g;
+        BigInteger q = seed.q;
+        BigInteger p = seed.p;
+        BigInteger g = seed.g;
         BigInteger w = privateKey.w;
 
         SecureRandom sr = new SecureRandom();
@@ -37,7 +39,7 @@ class KeySet {
 
 
     public String toString() {
-        return "public = " + publicKey + " private = " + privateKey;
+        return "seed = " + seed + " public = " + publicKey + " private = " + privateKey;
     }
 
 }

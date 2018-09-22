@@ -11,14 +11,17 @@ class KeySetTest {
     @Test
     void makeSign() {
         byte[] bytes = "".getBytes();
-        PublicKey publicKey = new PublicKey(
-                new BigInteger("0"),
+        KeySeed seed = new KeySeed(
+                0,
                 new BigInteger("0"),
                 new BigInteger("0"),
                 new BigInteger("0")
         );
+        PublicKey publicKey = new PublicKey(
+                new BigInteger("0")
+        );
         PrivateKey privateKey = new PrivateKey(new BigInteger("0"));
-        KeySet keyPair = new KeySet(publicKey,privateKey);
+        KeySet keyPair = new KeySet(seed,publicKey,privateKey);
         Signature signature = keyPair.sign(bytes);
         assertNotNull(signature);
     }

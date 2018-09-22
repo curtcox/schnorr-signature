@@ -15,10 +15,9 @@ final class KeyPairGenerator {
     KeySet generate() {
         BigInteger g = seed.g;
         BigInteger p = seed.p;
-        BigInteger q = seed.q;
         BigInteger w = random();
         BigInteger y = g.modPow(w, p);
-        return new KeySet(new PublicKey(q, p, g, y), new PrivateKey(w));
+        return new KeySet(seed, new PublicKey(y), new PrivateKey(w));
     }
 
     BigInteger random() {
