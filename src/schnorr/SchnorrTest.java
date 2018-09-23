@@ -52,7 +52,7 @@ public class SchnorrTest {
     void valid(String message, KeySet set) {
         byte[]        bytes = message.getBytes();
         Signature signature = set.signing.sign(bytes);
-        assertTrue(signature.check(bytes,set.verifying));
+        assertTrue(set.verifying.verify(bytes,signature));
     }
 
     @Test
@@ -108,7 +108,7 @@ public class SchnorrTest {
     void invalid(String message, KeySet set) {
         byte[]        bytes = message.getBytes();
         Signature signature = set.signing.sign(bytes);
-        assertFalse(signature.check(flip(bytes),set.verifying));
+        assertFalse(set.verifying.verify(flip(bytes),signature));
     }
 
     private byte[] flip(byte[] bytes) {

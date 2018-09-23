@@ -43,7 +43,7 @@ import java.util.*;
      }
 
      void checkSignature() {
-         if (signature.check(bytes, keySet.verifying)) {
+         if (keySet.verifying.verify(bytes,signature)) {
              println("Signature is valid");
          } else {
              println("Signature is not valid");

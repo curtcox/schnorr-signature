@@ -1,5 +1,7 @@
 package schnorr;
 
+import java.math.BigInteger;
+
 final class VerifyingKey {
 
     final KeySeed seed;
@@ -9,6 +11,21 @@ final class VerifyingKey {
         this.seed = seed;
         this.publicKey = publicKey;
     }
+
+    boolean verify(byte[] bytes, Signature signature) {
+        BigInteger p = seed.p;
+        BigInteger g = seed.g;
+        BigInteger y = publicKey.y;
+
+        BigInteger x1 = g.modPow(signature.s2, p);
+        BigInteger x2 = (y.modPow(signature.s1, p)).mod(p);
+        BigInteger x = x1.multiply(x2).mod(p);
+
+        BigInteger hh = Util.bigMd5(bytes,x);
+
+        return signature.s1.equals(hh);
+    }
+
 
     public String toString() {
         return "< seed=" + seed + " publicKey=" + publicKey + " >";
