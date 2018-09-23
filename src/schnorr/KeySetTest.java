@@ -22,7 +22,7 @@ class KeySetTest {
         );
         PrivateKey privateKey = new PrivateKey(new BigInteger("0"));
         KeySet keyPair = new KeySet(seed,publicKey,privateKey);
-        Signature signature = keyPair.sign(bytes);
+        Signature signature = keyPair.signing.sign(bytes);
         assertNotNull(signature);
     }
 

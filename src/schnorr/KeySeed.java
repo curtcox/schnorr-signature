@@ -15,4 +15,8 @@ final class KeySeed {
         this.p = p;
         this.g = g;
     }
+
+    public String toString() {
+        return "< bitLength=" + bitLength + " q=" + q + " p=" + p + " g=" + g +" >";
+    }
 }

@@ -12,10 +12,10 @@ final class Signature {
         this.s2 = s2;
     }
 
-    boolean check(byte[] bytes, KeySeed seed, PublicKey publicKey) {
-        BigInteger p = seed.p;
-        BigInteger g = seed.g;
-        BigInteger y = publicKey.y;
+    boolean check(byte[] bytes, VerifyingKey verifyingKey) {
+        BigInteger p = verifyingKey.seed.p;
+        BigInteger g = verifyingKey.seed.g;
+        BigInteger y = verifyingKey.publicKey.y;
 
         BigInteger x1 = g.modPow(s2, p);
         BigInteger x2 = (y.modPow(s1, p)).mod(p);

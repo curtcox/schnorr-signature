@@ -38,12 +38,12 @@ import java.util.*;
 
      void sign() {
          bytes = s.next().getBytes();
-         signature = keySet.sign(bytes);
+         signature = keySet.signing.sign(bytes);
          println("signature = " + signature);
      }
 
      void checkSignature() {
-         if (signature.check(bytes, keySet.seed, keySet.publicKey)) {
+         if (signature.check(bytes, keySet.verifying)) {
              println("Signature is valid");
          } else {
              println("Signature is not valid");

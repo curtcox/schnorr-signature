@@ -23,8 +23,9 @@ class SignatureTest {
                 new BigInteger("0")
         );
         PublicKey publicKey = new PublicKey(new BigInteger("0"));
+        VerifyingKey verifyingKey = new VerifyingKey(seed,publicKey);
         Signature sign = new Signature(new BigInteger("0"),new BigInteger("0"));
-        sign.check(bytes,seed,publicKey);
+        sign.check(bytes,verifyingKey);
     }
 
 }
