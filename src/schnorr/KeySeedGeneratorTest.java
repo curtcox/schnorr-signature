@@ -18,6 +18,11 @@ public class KeySeedGeneratorTest {
         valid(100);
     }
 
+    @Test
+    void bitLength_500() {
+        valid(500);
+    }
+
     private void valid(int bitLength) {
         KeySeedGenerator generator = new KeySeedGenerator(bitLength);
 

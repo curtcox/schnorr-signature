@@ -2,6 +2,8 @@ package schnorr;
 
 import org.junit.jupiter.api.Test;
 
+import java.math.BigInteger;
+
 import static org.junit.jupiter.api.Assertions.*;
 
 public class SchnorrTest {
@@ -119,6 +121,18 @@ public class SchnorrTest {
             out[i] = (byte) (in ^ mask);
         }
         return out;
+    }
+
+    @Test
+    void valid_16_bit() {
+        KeySeed seed = new KeySeed(16,new BigInteger("46681"), new BigInteger("560173"), new BigInteger("215867"));
+        PublicKey publicKey = new PublicKey(new BigInteger("351283"));
+        PrivateKey privateKey = new PrivateKey(new BigInteger("18704"));
+        KeySet set = new KeySet(seed,publicKey,privateKey);
+
+        byte[] message = "whatever".getBytes();
+
+        assertTrue(set.verifying.verify(message,set.signing.sign(message)));
     }
 
 }
