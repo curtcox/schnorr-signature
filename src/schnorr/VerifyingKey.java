@@ -13,8 +13,11 @@ final class VerifyingKey {
     }
 
     boolean verify(byte[] bytes, Signature signature) {
-        BigInteger hh = Util.bigMd5(bytes,x(signature));
-        return signature.s1.equals(hh);
+        return signature.s1.equals(hh(bytes,signature));
+    }
+
+    BigInteger hh(byte[] bytes,Signature signature) {
+        return Util.bigMd5(bytes,x(signature));
     }
 
     BigInteger x(Signature signature) {
@@ -23,7 +26,7 @@ final class VerifyingKey {
         BigInteger y = publicKey.y;
 
         BigInteger x1 = g.modPow(signature.s2, p);
-        BigInteger x2 = (y.modPow(signature.s1, p)).mod(p);
+        BigInteger x2 = y.modPow(signature.s1, p).mod(p);
 
         return  x1.multiply(x2).mod(p);
     }

@@ -25,7 +25,7 @@ final class SigningKey {
         BigInteger x = g.modPow(r, p);
 
         BigInteger s1 = Util.bigMd5(bytes,x);
-        BigInteger s2 = (r.subtract(w.multiply(s1))).mod(q);
+        BigInteger s2 = r.subtract(w.multiply(s1)).mod(q);
 
         return new Signature(s1, s2);
     }
